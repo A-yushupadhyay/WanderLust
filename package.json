@@ -2,9 +2,6 @@
   "engines": {
     "node": "20.9.0"
   },
-
-
-
   "name": "major-project--1",
   "version": "1.0.0",
   "main": "index.js",

@@ -19,6 +19,7 @@ const flash = require("connect-flash");
 const passport = require("passport");
 const localStrategy = require("passport-local");
 const User = require("./models/user.js");
+const MongoStore = require("connect-mongo");
 
 
 
@@ -55,8 +56,22 @@ async function main(){
     await mongoose.connect(dbUrl);
 }
 
+const store = MongoStore.create({
+    mongoUrl: dbUrl,
+    crypto: {
+      secret: process.env.SECRET,
+    },
+    touchAfter:24*3600,
+  });
+  store.on("error",()=>{
+    console.log("Error in MONGO SESSION STORE",err);
+  })
+
+
+
 const sessionOption = {
-    secret:"mysupersecretCode",
+    store,
+    secret:process.env.SECRET,
     resave:false,
     saveUninitialized:true,
     cookie:{

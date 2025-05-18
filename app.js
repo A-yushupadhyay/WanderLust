@@ -39,7 +39,7 @@ app.use(express.static(path.join(__dirname,"/public")));
 const dbUrl = process.env.ATLASDB_URL;
 
 
-// const MONGO = "mongodb://127.0.0.1:27017/wanderlust";
+
 
 
 
@@ -82,9 +82,6 @@ const sessionOption = {
 
 };
 
-app.get("/",(req,res)=>{
-    res.send("hi I am Root ");
-});
 
 app.use(session(sessionOption));
 app.use(flash());

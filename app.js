@@ -27,6 +27,7 @@ const MongoStore = require("connect-mongo");
 // app.use(express.json());
 
 app.set("view engine","ejs");
+app.set("views", path.join(__dirname, "/views"));
 app.use(express.urlencoded({extended:true}));
 app.use(express.json());
 app.use(methodOverride("_method"));
@@ -121,7 +122,7 @@ app.all("*",(req,res,next)=>{
 });
 app.use((err,req,res,next)=>{
     let{statusCode =500,message ="Something went wrong"} = err;
-    return res.status(statusCode).render(__dirname+"/views/error.ejs",{message});
+    return res.status(statusCode).render("error",{message});
     
 });
 

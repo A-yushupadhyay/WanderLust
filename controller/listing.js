@@ -6,12 +6,12 @@ const geocodingClient = mbxGeocoding({ accessToken: mapToken});
 
 module.exports.index = async(req,res)=>{
     const allListing = await Listing.find({});
-    return res.render("/Major Project -1/views/listings/index.ejs", {allListing});
+    return res.render("listings/index.ejs", {allListing});
 
 }
 
 module.exports.new = (req,res)=>{
-    return res.render( "/Major Project -1/views/listings/new.ejs");
+    return res.render( "listings/new.ejs");
     
 }
 module.exports.show = async(req,res)=>{
@@ -21,7 +21,7 @@ module.exports.show = async(req,res)=>{
         req.flash("error","Listing you requested for does not exists !");
         return res.redirect("/listings");
     }
-    return res.render("/Major Project -1/views/listings/show.ejs",{listing});
+    return res.render("listings/show.ejs",{listing});
     
 }
 module.exports.create = async(req,res)=>{
@@ -70,7 +70,7 @@ module.exports.edit = async(req,res)=>{
     let originalImageUrl = listing.image.url;
     originalImageUrl =  originalImageUrl.replace("/upload","/upload/h_200/w_250");
 
-    return res.render("/Major Project -1/views/listings/edit.ejs",{listing,originalImageUrl});
+    return res.render("listings/edit.ejs",{listing,originalImageUrl});
     
 }
 

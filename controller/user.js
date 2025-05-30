@@ -1,7 +1,7 @@
 const passport = require("passport");
 const User = require("../models/user.js");
 module.exports.getSign = (req,res)=>{
-    res.render("/Major Project -1/views/users/signup.ejs");
+    res.render("users/signup.ejs");
 }
 module.exports.postSign = async(req,res)=>{
     try{
@@ -23,7 +23,7 @@ module.exports.postSign = async(req,res)=>{
    
 }
 module.exports.getLog = (req,res)=>{
-    res.render("/Major Project -1/views/users/login.ejs");
+    res.render("users/login.ejs");
 }
 module.exports.postLog = async(req,res)=>{
     let redirectUrl = res.locals.redirectUrl||"/listings";
